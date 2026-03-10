@@ -1,0 +1,15 @@
+.about {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  color: #4CAF50;
+  text-align: center;
+}
+
+.about h3 {
+  color: #333;
+  margin-top: 2rem;
+}

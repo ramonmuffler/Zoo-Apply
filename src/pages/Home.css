@@ -1,0 +1,22 @@
+.home {
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+.info {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info h3 {
+  color: #333;
+}

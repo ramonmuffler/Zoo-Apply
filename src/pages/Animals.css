@@ -1,0 +1,27 @@
+.animals {
+  padding: 2rem;
+}
+
+.animals h2 {
+  text-align: center;
+  color: #4CAF50;
+}
+
+.animal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.animal-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.animal-card h3 {
+  color: #333;
+}

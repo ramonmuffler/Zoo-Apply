@@ -1,0 +1,25 @@
+.events {
+  padding: 2rem;
+}
+
+.events h2 {
+  text-align: center;
+  color: #4CAF50;
+}
+
+.event-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.event-card h3 {
+  color: #333;
+}

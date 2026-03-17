@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 interface HeaderProps {
@@ -22,11 +23,6 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
             <button onClick={() => setCurrentPage("animals")}>Tiere</button>
           </li>
           <li>
-            <button onClick={() => setCurrentPage("dining")}>
-              Essen &amp; Trinken
-            </button>
-          </li>
-          <li>
             <button onClick={() => setCurrentPage("events")}>Events</button>
           </li>
           <li>
@@ -34,6 +30,11 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
           </li>
           <li>
             <button onClick={() => setCurrentPage("contact")}>Kontakt</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("registration")}>
+              Registrieren
+            </button>
           </li>
         </ul>
       </nav>

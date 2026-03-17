@@ -10,11 +10,12 @@ const Home = () => {
       <section className="info">
         <h3>Öffnungszeiten</h3>
         <p>Montag - Freitag: 9:00 - 18:00</p>
-        <p>Samstag - Sonntag: 10:00 - 19:00</p>
+        <p>Samstag - Sonntag: 9:00 - 18:00</p>
         <h3>Eintrittspreise</h3>
-        <p>Erwachsene: 15€</p>
-        <p>Kinder (6-12): 10€</p>
-        <p>Kinder unter 6: kostenlos</p>
+        <p>Erwachsene(18 Jahre): 32 CHF</p>
+        <p>Jugendliche(13-17 Jahre): 27 CHF</p>
+        <p>Kinder (6-12 Jahre): 18 CHF</p>
+        <p>Kinder unter 6: Gratis</p>
       </section>
     </div>
   );

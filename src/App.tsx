@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -7,6 +8,7 @@ import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Dining from "./pages/Dining";
 import Tickets from "./pages/Tickets";
+import Registration from "./pages/Registration";
 import "./App.css";
 
 function App() {
@@ -20,14 +22,14 @@ function App() {
         return <About />;
       case "animals":
         return <Animals />;
-      case "dining":
-        return <Dining />;
       case "events":
         return <Events />;
       case "tickets":
         return <Tickets />;
       case "contact":
         return <Contact />;
+      case "registration":
+        return <Registration />;
       default:
         return <Home />;
     }

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-const Header = () => {
+interface HeaderProps {
+  setCurrentPage: (page: string) => void;
+}
+
+const Header = ({ setCurrentPage }: HeaderProps) => {
   return (
     <header className="header">
       <div className="logo">
@@ -10,22 +14,24 @@ const Header = () => {
       <nav className="nav">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <button onClick={() => setCurrentPage("home")}>Home</button>
           </li>
           <li>
-            <Link to="/about">Über uns</Link>
+            <button onClick={() => setCurrentPage("about")}>Über uns</button>
           </li>
           <li>
-            <Link to="/animals">Tiere</Link>
+            <button onClick={() => setCurrentPage("animals")}>Tiere</button>
           </li>
           <li>
-            <Link to="/events">Events</Link>
+            <button onClick={() => setCurrentPage("events")}>Events</button>
           </li>
           <li>
-            <Link to="/contact">Kontakt</Link>
+            <button onClick={() => setCurrentPage("contact")}>Kontakt</button>
           </li>
           <li>
-            <Link to="/registration">Registrieren</Link>
+            <button onClick={() => setCurrentPage("registration")}>
+              Registrieren
+            </button>
           </li>
         </ul>
       </nav>

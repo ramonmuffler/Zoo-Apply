@@ -1,0 +1,12 @@
+[
+  {
+    "username": "Luke",
+    "email": "luke.waldvogel@daw.ch",
+    "password": "12345678"
+  },
+  {
+    "username": "chicken",
+    "email": "chicken@chicken.ch",
+    "password": "chicken"
+  }
+]

@@ -3,12 +3,12 @@ import './About.css';
 const About = () => {
   return (
     <div className="about">
-      <h2>Über unseren Zoo</h2>
-      <p>Unser Zoo wurde 1950 gegründet und ist seitdem ein beliebtes Ziel für Familien und Tierliebhaber. Wir beherbergen über 500 verschiedene Tierarten und legen großen Wert auf den Schutz und die Erhaltung bedrohter Arten.</p>
+      <h2>Über den Zoo Zürich</h2>
+      <p>Der Zoo Zürich wurde 1929 eröffnet und zählt heute zu den bekanntesten Zoos der Schweiz. Er ist ein beliebtes Ausflugsziel für Familien, Schulklassen und Tierinteressierte. Der Zoo beherbergt zahlreiche Tierarten aus verschiedenen Lebensräumen und setzt sich besonders für den Schutz bedrohter Tiere und ihrer natürlichen Lebensräume ein.</p>
       <h3>Unsere Mission</h3>
-      <p>Wir streben danach, Bildung, Unterhaltung und Naturschutz zu verbinden. Durch unsere Programme lernen Besucher die Bedeutung des Umweltschutzes kennen.</p>
+      <p>Der Zoo Zürich verbindet Bildung, Naturerlebnis und Artenschutz. Besucherinnen und Besucher sollen Tiere nicht nur entdecken, sondern auch die Bedeutung von Umwelt- und Naturschutz besser verstehen. Mit verschiedenen Projekten engagiert sich der Zoo aktiv für den Erhalt der Biodiversität und unterstützt internationale Schutzprogramme.</p>
       <h3>Geschichte</h3>
-      <p>Seit unserer Gründung haben wir uns kontinuierlich weiterentwickelt, neue Gehege gebaut und unsere Sammlung erweitert. Heute sind wir stolz darauf, einer der besten Zoos in der Region zu sein.</p>
+      <p>Seit seiner Eröffnung hat sich der Zoo Zürich laufend weiterentwickelt. Im Laufe der Jahre entstanden moderne und naturnahe Anlagen wie der Masoala Regenwald, der Kaeng Krachan Elefantenpark und die Lewa Savanne. Heute gilt der Zoo Zürich als modernes Natur- und Artenschutzzentrum mit grosser Bedeutung für Bildung, Forschung und nachhaltigen Naturschutz.</p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import './Header.css';
+import "./Header.css";
 
 interface HeaderProps {
   setCurrentPage: (page: string) => void;
@@ -12,12 +12,26 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
       </div>
       <nav className="nav">
         <ul>
-          <li><button onClick={() => setCurrentPage('home')}>Home</button></li>
-          <li><button onClick={() => setCurrentPage('about')}>Über uns</button></li>
-          <li><button onClick={() => setCurrentPage('animals')}>Tiere</button></li>
-          <li><button onClick={() => setCurrentPage('dining')}>Essen &amp; Trinken</button></li>
-          <li><button onClick={() => setCurrentPage('events')}>Events</button></li>
-          <li><button onClick={() => setCurrentPage('contact')}>Kontakt</button></li>
+          <li>
+            <button onClick={() => setCurrentPage("home")}>Home</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("about")}>Über uns</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("animals")}>Tiere</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("dining")}>
+              Essen &amp; Trinken
+            </button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("events")}>Events</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("contact")}>Kontakt</button>
+          </li>
         </ul>
       </nav>
     </header>

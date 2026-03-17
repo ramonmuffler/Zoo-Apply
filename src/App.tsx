@@ -1,29 +1,29 @@
-import { useState } from 'react';
-import Header from './components/Header';
-import Home from './pages/Home';
-import About from './pages/About';
-import Animals from './pages/Animals';
-import Events from './pages/Events';
-import Contact from './pages/Contact';
-import Dining from './pages/Dining';
-import './App.css';
+import { useState } from "react";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Animals from "./pages/Animals";
+import Events from "./pages/Events";
+import Contact from "./pages/Contact";
+import Dining from "./pages/Dining";
+import "./App.css";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
+      case "home":
         return <Home />;
-      case 'about':
+      case "about":
         return <About />;
-      case 'animals':
+      case "animals":
         return <Animals />;
-      case 'dining':
+      case "dining":
         return <Dining />;
-      case 'events':
+      case "events":
         return <Events />;
-      case 'contact':
+      case "contact":
         return <Contact />;
       default:
         return <Home />;
@@ -33,9 +33,7 @@ function App() {
   return (
     <div className="app">
       <Header setCurrentPage={setCurrentPage} />
-      <main>
-        {renderPage()}
-      </main>
+      <main>{renderPage()}</main>
     </div>
   );
 }

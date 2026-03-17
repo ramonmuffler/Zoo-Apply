@@ -5,6 +5,7 @@ import About from './pages/About';
 import Animals from './pages/Animals';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
+import Dining from './pages/Dining';
 import './App.css';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         return <About />;
       case 'animals':
         return <Animals />;
+      case 'dining':
+        return <Dining />;
       case 'events':
         return <Events />;
       case 'contact':

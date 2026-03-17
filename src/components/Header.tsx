@@ -1,10 +1,7 @@
-import './Header.css';
+import { Link } from "react-router-dom";
+import "./Header.css";
 
-interface HeaderProps {
-  setCurrentPage: (page: string) => void;
-}
-
-const Header = ({ setCurrentPage }: HeaderProps) => {
+const Header = () => {
   return (
     <header className="header">
       <div className="logo">
@@ -12,11 +9,24 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
       </div>
       <nav className="nav">
         <ul>
-          <li><button onClick={() => setCurrentPage('home')}>Home</button></li>
-          <li><button onClick={() => setCurrentPage('about')}>Über uns</button></li>
-          <li><button onClick={() => setCurrentPage('animals')}>Tiere</button></li>
-          <li><button onClick={() => setCurrentPage('events')}>Events</button></li>
-          <li><button onClick={() => setCurrentPage('contact')}>Kontakt</button></li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">Über uns</Link>
+          </li>
+          <li>
+            <Link to="/animals">Tiere</Link>
+          </li>
+          <li>
+            <Link to="/events">Events</Link>
+          </li>
+          <li>
+            <Link to="/contact">Kontakt</Link>
+          </li>
+          <li>
+            <Link to="/registration">Registrieren</Link>
+          </li>
         </ul>
       </nav>
     </header>

@@ -6,6 +6,7 @@ import Animals from "./pages/Animals";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
 import Dining from "./pages/Dining";
+import Tickets from "./pages/Tickets";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
         return <Dining />;
       case "events":
         return <Events />;
+      case "tickets":
+        return <Tickets />;
       case "contact":
         return <Contact />;
       default:

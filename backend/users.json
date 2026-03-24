@@ -8,5 +8,10 @@
     "username": "chicken",
     "email": "chicken@chicken.ch",
     "password": "chicken"
+  },
+  {
+    "username": "michael",
+    "email": "michael.hersberger@icloud.com",
+    "password": "1234"
   }
 ]

@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -24,6 +23,8 @@ function App() {
         return <Animals />;
       case "events":
         return <Events />;
+      case "dining":
+        return <Dining />;
       case "tickets":
         return <Tickets />;
       case "contact":

@@ -1,0 +1,235 @@
+.reviews {
+  padding: 2rem;
+  background: linear-gradient(180deg, #f6fbf5 0%, #ffffff 28%);
+}
+
+.reviews-hero {
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 320px);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.reviews-eyebrow {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4caf50;
+}
+
+.reviews-hero h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2.2rem;
+  color: #234028;
+}
+
+.reviews-hero p {
+  color: #425244;
+}
+
+.reviews-score-card,
+.reviews-panel,
+.review-card {
+  border: 1px solid #dce8dc;
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 18px 45px rgba(35, 64, 40, 0.08);
+}
+
+.reviews-score-card {
+  padding: 1.5rem;
+  display: grid;
+  align-content: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #4caf50 0%, #76c26c 100%);
+  color: #ffffff;
+}
+
+.reviews-score-card strong {
+  font-size: 2.3rem;
+  line-height: 1;
+}
+
+.reviews-score-card p,
+.reviews-score-card span {
+  margin: 0;
+  color: inherit;
+}
+
+.reviews-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.reviews-panel {
+  padding: 1.5rem;
+}
+
+.reviews-panel h3 {
+  margin-top: 0;
+  color: #234028;
+}
+
+.reviews-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.reviews-form label,
+.reviews-rating {
+  display: grid;
+  gap: 0.45rem;
+  color: #2f3b31;
+  font-weight: 600;
+}
+
+.reviews-form input,
+.reviews-form select,
+.reviews-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid #cfd8cf;
+  border-radius: 12px;
+  font: inherit;
+  color: #1c241d;
+  background-color: #fcfffc;
+}
+
+.reviews-form input:focus,
+.reviews-form select:focus,
+.reviews-form textarea:focus {
+  outline: 2px solid rgba(76, 175, 80, 0.25);
+  border-color: #4caf50;
+}
+
+.reviews-rating {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.reviews-stars {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.reviews-stars button {
+  border: 1px solid #cfd8cf;
+  border-radius: 12px;
+  min-height: 48px;
+  background-color: #f4f8f4;
+  color: #526254;
+  font-size: 0;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.reviews-stars button::before {
+  content: "★";
+  font-size: 1.4rem;
+}
+
+.reviews-stars button:hover,
+.reviews-stars button.is-active {
+  transform: translateY(-1px);
+  background-color: #e7f5e8;
+  border-color: #4caf50;
+  color: #f2b01e;
+}
+
+.reviews-submit {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.2rem;
+  background-color: #234028;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.reviews-submit:hover {
+  background-color: #1b321f;
+}
+
+.reviews-success {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background-color: #ebf7ec;
+  border: 1px solid #bfe0c2;
+  color: #234028;
+}
+
+.reviews-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.review-card {
+  padding: 1rem 1.1rem;
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.review-card-header div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.review-card-header span {
+  color: #607162;
+}
+
+.review-card p {
+  margin: 0;
+  color: #3f4d41;
+}
+
+.review-badge {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background-color: #edf7ee;
+  color: #2d5a31;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 840px) {
+  .reviews {
+    padding: 1.5rem 1rem;
+  }
+
+  .reviews-hero,
+  .reviews-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .reviews-stars {
+    grid-template-columns: repeat(5, 48px);
+    justify-content: space-between;
+  }
+
+  .review-card-header {
+    flex-direction: column;
+  }
+}

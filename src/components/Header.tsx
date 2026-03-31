@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./Header.css";
 
 interface HeaderProps {
@@ -30,6 +29,9 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
           </li>
           <li>
             <button onClick={() => setCurrentPage("tickets")}>Tickets</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("reviews")}>Bewertungen</button>
           </li>
           <li>
             <button onClick={() => setCurrentPage("contact")}>Kontakt</button>

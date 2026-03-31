@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Dining from "./pages/Dining";
 import Tickets from "./pages/Tickets";
 import Registration from "./pages/Registration";
+import Reviews from "./pages/Reviews";
 import "./App.css";
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
         return <Contact />;
       case "registration":
         return <Registration />;
+      case "reviews":
+        return <Reviews />;
       default:
         return <Home />;
     }

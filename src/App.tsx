@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Animals from "./pages/Animals";
 import Events from "./pages/Events";
+import Attractions from "./pages/Attractions";
 import Contact from "./pages/Contact";
 import Dining from "./pages/Dining";
 import Tickets from "./pages/Tickets";
@@ -26,6 +27,8 @@ function App() {
         return <Animals />;
       case "events":
         return <Events />;
+      case "attractions":
+        return <Attractions />;
       case "dining":
         return <Dining />;
       case "tickets":

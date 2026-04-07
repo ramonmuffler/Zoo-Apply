@@ -8,12 +8,6 @@
 }
 
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .logo h1 {
   margin: 0;
   font-size: 1.5rem;
@@ -44,58 +38,6 @@
 
 .nav button:hover {
   text-decoration: underline;
-}
-
-.theme-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.theme-switch input {
-  appearance: none;
-  width: 44px;
-  height: 24px;
-  border-radius: 999px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  position: relative;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.theme-switch input::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background-color: var(--color-header-text);
-  transition: transform 0.2s ease;
-}
-
-.theme-switch input:checked {
-  background-color: var(--color-header-bg);
-  border-color: var(--color-header-text);
-}
-
-.theme-switch input:checked::after {
-  transform: translateX(20px);
-}
-
-.theme-switch input:focus-visible {
-  outline: 3px auto -webkit-focus-ring-color;
-  outline-offset: 2px;
-}
-
-.theme-switch-label {
-  font-weight: 700;
-  color: var(--color-header-text);
-  font-size: 0.95rem;
 }
 
 .auth-section {

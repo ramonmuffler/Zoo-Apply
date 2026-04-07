@@ -8,6 +8,8 @@ import Contact from "./pages/Contact";
 import Dining from "./pages/Dining";
 import Tickets from "./pages/Tickets";
 import Registration from "./pages/Registration";
+import Login from "./pages/Login";
+import Settings from "./pages/Settings";
 import Reviews from "./pages/Reviews";
 import "./App.css";
 
@@ -32,6 +34,10 @@ function App() {
         return <Contact />;
       case "registration":
         return <Registration />;
+      case "login":
+        return <Login />;
+      case "settings":
+        return <Settings />;
       case "reviews":
         return <Reviews />;
       default:

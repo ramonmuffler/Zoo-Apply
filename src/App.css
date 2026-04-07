@@ -2,8 +2,8 @@
   font-family: Arial, sans-serif;
   width: 100%;
   min-height: 100vh;
-  background-color: #ffffff;
-  color: #213547;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 main {

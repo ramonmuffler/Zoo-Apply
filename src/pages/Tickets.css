@@ -24,21 +24,21 @@
 }
 
 .tickets-card {
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   padding: 1.5rem;
   border-radius: 12px;
-  background-color: #f9f9f9;
+  background-color: var(--color-surface);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .tickets-card h3,
 .tickets-success h4 {
   margin-top: 0;
-  color: #333;
+  color: var(--color-text);
 }
 
 .tickets-prices {
-  background: linear-gradient(180deg, #f9f9f9 0%, #eef8ef 100%);
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
 }
 
 .tickets-price-list {
@@ -52,12 +52,12 @@
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tickets-note {
   margin-bottom: 0;
-  color: #555;
+  color: var(--color-text-muted);
 }
 
 .tickets-form {
@@ -68,7 +68,7 @@
 .tickets-field {
   display: grid;
   gap: 0.4rem;
-  color: #333;
+  color: var(--color-text);
   font-weight: 600;
   min-width: 0;
 }
@@ -76,12 +76,12 @@
 .tickets-form input {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid #cfd8cf;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 0.8rem 0.9rem;
   font: inherit;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--color-input-bg);
+  color: var(--color-input-text);
 }
 
 .tickets-form input:focus {
@@ -90,7 +90,7 @@
 }
 
 .tickets-form input::placeholder {
-  color: #4f4f4f;
+  color: var(--color-text-muted);
 }
 
 .tickets-date-field {
@@ -100,7 +100,6 @@
 .tickets-date-input {
   min-height: 48px;
   cursor: pointer;
-  color-scheme: light;
 }
 
 .tickets-quantity-grid {
@@ -115,7 +114,7 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 10px;
-  background-color: #edf7ee;
+  background-color: var(--color-surface);
 }
 
 .tickets-summary div {
@@ -145,8 +144,8 @@
   margin-top: 1.5rem;
   padding: 1rem 1.25rem;
   border-radius: 10px;
-  background-color: #e8f5e9;
-  border: 1px solid #c8e6c9;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
 }
 
 .tickets-success p:last-child {

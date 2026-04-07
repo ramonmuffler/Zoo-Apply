@@ -1,14 +1,43 @@
 import "./Header.css";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   setCurrentPage: (page: string) => void;
 }
 
 const Header = ({ setCurrentPage }: HeaderProps) => {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme === "dark" ? "dark" : "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((current) => (current === "dark" ? "light" : "dark"));
+  };
+
   return (
     <header className="header">
       <div className="logo">
         <h1>Zoo Homepage</h1>
+        <label className="theme-switch">
+          <input
+            type="checkbox"
+            checked={theme === "dark"}
+            onChange={toggleTheme}
+          />
+          <span className="theme-switch-label">
+            {theme === "dark" ? "Dark" : "Light"}
+          </span>
+        </label>
       </div>
       <nav className="nav">
         <ul>
@@ -25,13 +54,17 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
             <button onClick={() => setCurrentPage("events")}>Events</button>
           </li>
           <li>
-            <button onClick={() => setCurrentPage("dining")}>Essen & Trinken</button>
+            <button onClick={() => setCurrentPage("dining")}>
+              Essen & Trinken
+            </button>
           </li>
           <li>
             <button onClick={() => setCurrentPage("tickets")}>Tickets</button>
           </li>
           <li>
-            <button onClick={() => setCurrentPage("reviews")}>Bewertungen</button>
+            <button onClick={() => setCurrentPage("reviews")}>
+              Bewertungen
+            </button>
           </li>
           <li>
             <button onClick={() => setCurrentPage("contact")}>Kontakt</button>

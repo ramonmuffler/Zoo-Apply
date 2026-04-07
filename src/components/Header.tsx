@@ -25,6 +25,9 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
             <button onClick={() => setCurrentPage("events")}>Events</button>
           </li>
           <li>
+            <button onClick={() => setCurrentPage("attractions")}>Attraktionen</button>
+          </li>
+          <li>
             <button onClick={() => setCurrentPage("dining")}>Essen & Trinken</button>
           </li>
           <li>

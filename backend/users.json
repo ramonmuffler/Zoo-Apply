@@ -13,5 +13,15 @@
     "username": "michael",
     "email": "michael.hersberger@icloud.com",
     "password": "1234"
+  },
+  {
+    "username": "asdf",
+    "email": "asdf@a",
+    "password": "asdf"
+  },
+  {
+    "username": "abc",
+    "email": "a@bc",
+    "password": "abc"
   }
 ]

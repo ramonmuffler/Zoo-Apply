@@ -50,6 +50,14 @@ npm run dev
 Die App läuft danach typischerweise unter:
 http://localhost:5173
 
+## Backend Starten
+
+```bash
+node server.js
+```
+
+Server läuft auf http://localhost:5000
+
 ---
 
 ## Scripts
@@ -69,4 +77,5 @@ Ramon Meier
 Allesandro Liniger
 Timo Maag
 Luke Waldvogel
-GitHub: https://github.com/ramonmuffler
+
+https://github.com/ramonmuffler/Zoo-Apply

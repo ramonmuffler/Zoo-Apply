@@ -58,6 +58,9 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
           <li>
             <button onClick={() => setCurrentPage("attractions")}>Attraktionen</button>
           </li>
+                    <li>
+            <button onClick={() => setCurrentPage("map_to_zoo")}>Karte zum Zoo</button>
+          </li>
           <li>
             <button onClick={() => setCurrentPage("dining")}>Essen & Trinken</button>
           </li>

@@ -1,8 +1,10 @@
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/useTheme";
 import "./Settings.css";
 
 const Settings = () => {
-  const { username, logout } = useAuth();
+  const { isLoggedIn, username, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     logout();
@@ -15,20 +17,38 @@ const Settings = () => {
         <h2>Einstellungen</h2>
 
         <div className="settings-section">
-          <h3>Benutzerprofil</h3>
-          <div className="profile-info">
-            <p>
-              <strong>Benutzername:</strong> {username}
-            </p>
-          </div>
+          <h3>Darstellung</h3>
+          <label className="theme-switch">
+            <input
+              type="checkbox"
+              checked={theme === "dark"}
+              onChange={toggleTheme}
+            />
+            <span className="theme-switch-label">Darkmode</span>
+          </label>
         </div>
 
-        <div className="settings-section danger-zone">
-          <h3>Konto</h3>
-          <button onClick={handleLogout} className="logout-btn">
-            Abmelden
-          </button>
+        <div className="settings-section">
+          <h3>Benutzerprofil</h3>
+          {isLoggedIn ? (
+            <div className="profile-info">
+              <p>
+                <strong>Benutzername:</strong> {username}
+              </p>
+            </div>
+          ) : (
+            <p className="settings-muted">Du bist aktuell nicht eingeloggt.</p>
+          )}
         </div>
+
+        {isLoggedIn && (
+          <div className="settings-section danger-zone">
+            <h3>Konto</h3>
+            <button onClick={handleLogout} className="logout-btn">
+              Abmelden
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

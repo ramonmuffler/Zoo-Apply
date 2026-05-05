@@ -29,7 +29,7 @@ const Registration = () => {
       if (response.ok) {
         setFormData({ username: "", email: "", password: "" });
       }
-    } catch (err) {
+    } catch {
       setMessage("Server nicht erreichbar!");
     }
   };

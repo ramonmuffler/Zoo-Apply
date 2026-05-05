@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
+import { useAuth } from "../context/useAuth";
 import "./Tickets.css";
 
 const ticketTypes = [
@@ -34,8 +35,11 @@ const getToday = () => {
 };
 
 const Tickets = () => {
+  const { username } = useAuth();
   const [form, setForm] = useState<TicketForm>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
 
   const totalTickets = form.adults + form.children + form.family;
 
@@ -47,13 +51,44 @@ const Tickets = () => {
     [form.adults, form.children, form.family]
   );
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setIsSaving(true);
+    setSubmitted(false);
+    setFeedbackMessage("");
+
+    try {
+      const response = await fetch("http://localhost:5000/tickets", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          totalTickets,
+          totalPrice,
+          username,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setFeedbackMessage(data.message || "Ticketbestellung konnte nicht gespeichert werden.");
+        return;
+      }
+
+      setSubmitted(true);
+      setFeedbackMessage(data.message || "Ticketbestellung erfolgreich gespeichert!");
+      setForm(initialForm);
+    } catch {
+      setFeedbackMessage("Server nicht erreichbar!");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const updateForm = <K extends keyof TicketForm>(field: K, value: TicketForm[K]) => {
     setSubmitted(false);
+    setFeedbackMessage("");
     setForm((currentForm) => ({
       ...currentForm,
       [field]: value,
@@ -165,21 +200,26 @@ const Tickets = () => {
             <button
               type="submit"
               className="tickets-submit"
-              disabled={totalTickets === 0}
+              disabled={totalTickets === 0 || isSaving}
             >
-              Jetzt bestellen
+              {isSaving ? "Speichert..." : "Jetzt bestellen"}
             </button>
           </form>
 
-          {submitted && (
-            <div className="tickets-success" role="status">
-              <h4>Bestellung erfasst</h4>
-              <p>
-                Vielen Dank, {form.fullName}. Ihre Anfrage fuer den{" "}
-                {form.visitDate || "gewaehlten Tag"} mit {totalTickets} Ticket
-                {totalTickets === 1 ? "" : "s"} wurde vorbereitet.
-              </p>
-              <p>Unser Team kann die Bestellung nun weiterbearbeiten.</p>
+          {feedbackMessage && (
+            <div
+              className={submitted ? "tickets-success" : "tickets-note"}
+              role="status"
+            >
+              {submitted ? (
+                <>
+                  <h4>Bestellung erfasst</h4>
+                  <p>{feedbackMessage}</p>
+                  <p>Unser Team kann die Bestellung nun weiterbearbeiten.</p>
+                </>
+              ) : (
+                <p>{feedbackMessage}</p>
+              )}
             </div>
           )}
         </article>

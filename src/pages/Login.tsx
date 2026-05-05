@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 import "./Login.css";
 
 const Login = () => {
@@ -31,7 +31,7 @@ const Login = () => {
         login(formData.username);
         setFormData({ username: "", password: "" });
       }
-    } catch (err) {
+    } catch {
       setMessage("Server nicht erreichbar!");
     }
   };

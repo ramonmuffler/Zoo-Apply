@@ -1,37 +1,15 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { FormEvent } from "react";
+import { useAuth } from "../context/useAuth";
 import "./Reviews.css";
 
 type Review = {
+  _id?: string;
   name: string;
   visitType: string;
   rating: number;
   message: string;
 };
-
-const initialReviews: Review[] = [
-  {
-    name: "Familie Keller",
-    visitType: "Familienbesuch",
-    rating: 5,
-    message:
-      "Die Anlagen waren gepflegt, die Wege kinderfreundlich und die Futtershow bei den Seeloewen ein Highlight.",
-  },
-  {
-    name: "Noah, 14",
-    visitType: "Schulausflug",
-    rating: 4,
-    message:
-      "Besonders spannend waren die Elefanten und die Infotafeln. Mehr Sitzplaetze waeren fuer Pausen noch schoen.",
-  },
-  {
-    name: "Sabrina Meier",
-    visitType: "Wochenendtrip",
-    rating: 5,
-    message:
-      "Online-Tickets, Gastronomie und Orientierung vor Ort haben super funktioniert. Wir kommen gerne wieder.",
-  },
-];
 
 const ratingLabels: Record<number, string> = {
   1: "Verbesserungsbeduerftig",
@@ -42,34 +20,83 @@ const ratingLabels: Record<number, string> = {
 };
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState(initialReviews);
+  const { username } = useAuth();
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [name, setName] = useState("");
   const [visitType, setVisitType] = useState("Familienbesuch");
   const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/reviews");
+        const data = await response.json();
+
+        if (!response.ok) {
+          setFeedbackMessage(data.message || "Bewertungen konnten nicht geladen werden.");
+          return;
+        }
+
+        setReviews(data);
+      } catch {
+        setFeedbackMessage("Server nicht erreichbar!");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadReviews();
+  }, []);
 
   const averageRating = useMemo(() => {
+    if (reviews.length === 0) {
+      return "0.0";
+    }
+
     const total = reviews.reduce((sum, review) => sum + review.rating, 0);
     return (total / reviews.length).toFixed(1);
   }, [reviews]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSaving(true);
+    setFeedbackMessage("");
 
-    const newReview: Review = {
-      name,
-      visitType,
-      rating,
-      message,
-    };
+    try {
+      const response = await fetch("http://localhost:5000/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          visitType,
+          rating,
+          message,
+          username,
+        }),
+      });
 
-    setReviews((currentReviews) => [newReview, ...currentReviews]);
-    setName("");
-    setVisitType("Familienbesuch");
-    setRating(5);
-    setMessage("");
-    setSubmitted(true);
+      const data = await response.json();
+
+      if (!response.ok) {
+        setFeedbackMessage(data.message || "Bewertung konnte nicht gespeichert werden.");
+        return;
+      }
+
+      setReviews((currentReviews) => [data.review, ...currentReviews]);
+      setName("");
+      setVisitType("Familienbesuch");
+      setRating(5);
+      setMessage("");
+      setFeedbackMessage(data.message || "Bewertung erfolgreich gespeichert!");
+    } catch {
+      setFeedbackMessage("Server nicht erreichbar!");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -87,7 +114,7 @@ const Reviews = () => {
         <div className="reviews-score-card">
           <strong>{averageRating} / 5</strong>
           <span>Durchschnitt aus {reviews.length} Bewertungen</span>
-          <p>{ratingLabels[Math.round(Number(averageRating))]}</p>
+          <p>{ratingLabels[Math.max(1, Math.round(Number(averageRating)))]}</p>
         </div>
       </section>
 
@@ -102,7 +129,7 @@ const Reviews = () => {
                 value={name}
                 onChange={(event) => {
                   setName(event.target.value);
-                  setSubmitted(false);
+                  setFeedbackMessage("");
                 }}
                 placeholder="Max Muster"
                 required
@@ -115,7 +142,7 @@ const Reviews = () => {
                 value={visitType}
                 onChange={(event) => {
                   setVisitType(event.target.value);
-                  setSubmitted(false);
+                  setFeedbackMessage("");
                 }}
               >
                 <option>Familienbesuch</option>
@@ -135,7 +162,7 @@ const Reviews = () => {
                     className={value <= rating ? "is-active" : ""}
                     onClick={() => {
                       setRating(value);
-                      setSubmitted(false);
+                      setFeedbackMessage("");
                     }}
                     aria-pressed={value === rating}
                   >
@@ -152,7 +179,7 @@ const Reviews = () => {
                 value={message}
                 onChange={(event) => {
                   setMessage(event.target.value);
-                  setSubmitted(false);
+                  setFeedbackMessage("");
                 }}
                 placeholder="Was hat Ihnen besonders gefallen?"
                 rows={5}
@@ -160,15 +187,14 @@ const Reviews = () => {
               />
             </label>
 
-            <button type="submit" className="reviews-submit">
-              Bewertung senden
+            <button type="submit" className="reviews-submit" disabled={isSaving}>
+              {isSaving ? "Speichert..." : "Bewertung senden"}
             </button>
           </form>
 
-          {submitted && (
+          {feedbackMessage && (
             <div className="reviews-success" role="status">
-              Vielen Dank fuer Ihr Feedback. Ihre Bewertung ist jetzt auf der
-              Seite sichtbar.
+              {feedbackMessage}
             </div>
           )}
         </article>
@@ -176,18 +202,27 @@ const Reviews = () => {
         <article className="reviews-panel">
           <h3>Aktuelle Bewertungen</h3>
           <div className="reviews-list">
-            {reviews.map((review, index) => (
-              <article key={`${review.name}-${index}`} className="review-card">
-                <div className="review-card-header">
-                  <div>
-                    <strong>{review.name}</strong>
-                    <span>{review.visitType}</span>
+            {isLoading ? (
+              <p>Bewertungen werden geladen...</p>
+            ) : reviews.length === 0 ? (
+              <p>Noch keine Bewertungen vorhanden.</p>
+            ) : (
+              reviews.map((review, index) => (
+                <article
+                  key={review._id || `${review.name}-${index}`}
+                  className="review-card"
+                >
+                  <div className="review-card-header">
+                    <div>
+                      <strong>{review.name}</strong>
+                      <span>{review.visitType}</span>
+                    </div>
+                    <span className="review-badge">{review.rating} / 5</span>
                   </div>
-                  <span className="review-badge">{review.rating} / 5</span>
-                </div>
-                <p>{review.message}</p>
-              </article>
-            ))}
+                  <p>{review.message}</p>
+                </article>
+              ))
+            )}
           </div>
         </article>
       </section>

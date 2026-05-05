@@ -101,7 +101,10 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
             >
               Registrieren
             </button>
-            <button onClick={() => setCurrentPage("login")} className="auth-btn">
+            <button
+              onClick={() => setCurrentPage("login")}
+              className="auth-btn"
+            >
               Anmelden
             </button>
           </>

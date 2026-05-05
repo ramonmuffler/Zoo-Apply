@@ -134,8 +134,7 @@
   flex: 0 0 auto;
   justify-self: end;
   padding-left: 1rem;
-  border-left: 1px solid
-    color-mix(in srgb, var(--color-header-text), transparent 70%);
+  border-left: 1px solid color-mix(in srgb, var(--color-header-text), transparent 70%);
   font-size: 0.95rem;
 }
 

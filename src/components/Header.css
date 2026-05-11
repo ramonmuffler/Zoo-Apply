@@ -7,30 +7,37 @@
   color: var(--color-header-text);
 }
 
-
 .logo h1 {
   margin: 0;
   font-size: 1.5rem;
 }
 
-.nav ul {
+/* Nav-Wrapper: alles in einer Zeile */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Hauptlinks */
+.nav-main {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
+  gap: 0.25rem;
 }
 
-.nav li {
-  margin-left: 2rem;
+.nav-main li {
+  margin: 0;
 }
 
 .nav button {
   background: none;
   border: none;
-  padding: 0;
+  padding: 0.25rem 0.5rem;
   border-radius: 0;
   color: var(--color-header-text);
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
   font-size: inherit;
@@ -40,12 +47,12 @@
   text-decoration: underline;
 }
 
+/* Auth-Bereich */
 .auth-section {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-left: 2rem !important;
-  padding-left: 2rem;
+  gap: 0.75rem;
+  padding-left: 1.5rem;
   border-left: 1px solid var(--color-border);
 }
 
@@ -55,18 +62,92 @@
   white-space: nowrap;
 }
 
+/* Einstellungen-Button */
 .settings-btn {
-  background-color: #4caf50;
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 4px;
+  background-color: #4caf50 !important;
+  color: white !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 4px !important;
   border: none;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
+  width: 100%;
+  text-align: left;
 }
 
 .settings-btn:hover {
-  background-color: #45a049;
+  background-color: #45a049 !important;
+  text-decoration: none !important;
+}
+
+/* ── Burger-Menü ── */
+.burger-wrapper {
+  position: relative;
+}
+
+.burger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0 !important;
+}
+
+.burger-btn span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-header-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Animiertes X wenn offen */
+.burger-btn.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.burger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-btn.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  background-color: var(--color-header-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.dropdown-menu button {
+  padding: 0.65rem 1.25rem;
+  text-align: left;
+  border-radius: 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+.dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu button:hover {
+  background-color: rgba(128, 128, 128, 0.1);
   text-decoration: none;
 }

@@ -7,104 +7,66 @@
   color: var(--color-header-text);
 }
 
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .logo h1 {
   margin: 0;
   font-size: 1.5rem;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
-.nav ul {
+/* Nav-Wrapper */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Hauptlinks */
+.nav-main {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
+  gap: 0.25rem;
 }
 
-.nav li {
-  margin-left: 2rem;
+.nav-main li {
+  margin: 0;
 }
 
 .nav button {
   background: none;
   border: none;
-  padding: 0;
-  border-radius: 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
   color: var(--color-header-text);
-  text-decoration: none;
   font-weight: bold;
   cursor: pointer;
   font-size: inherit;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: text-decoration-color 0.15s ease;
 }
 
 .nav button:hover {
   text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 
-.theme-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.theme-switch input {
-  appearance: none;
-  width: 44px;
-  height: 24px;
-  border-radius: 999px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  position: relative;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.theme-switch input::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background-color: var(--color-header-text);
-  transition: transform 0.2s ease;
-}
-
-.theme-switch input:checked {
-  background-color: var(--color-header-bg);
-  border-color: var(--color-header-text);
-}
-
-.theme-switch input:checked::after {
-  transform: translateX(20px);
-}
-
-.theme-switch input:focus-visible {
+.nav button:focus-visible {
   outline: 3px auto -webkit-focus-ring-color;
   outline-offset: 2px;
 }
 
-.theme-switch-label {
-  font-weight: 700;
-  color: var(--color-header-text);
-  font-size: 0.95rem;
-}
-
-.auth-section {
+/* ── Auth-Bereich (aus zweitem CSS behalten) ── */
+.auth {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-left: 2rem !important;
-  padding-left: 2rem;
-  border-left: 1px solid var(--color-border);
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  padding-left: 1.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-header-text), transparent 70%);
+  font-size: 0.95rem;
 }
 
 .logged-in {
@@ -113,18 +75,110 @@
   white-space: nowrap;
 }
 
+.auth-btn {
+  background-color: transparent;
+  border: 0;
+  padding: 0.25rem 0.25rem;
+  border-radius: 6px;
+  color: var(--color-header-text);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.auth-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Einstellungen-Button */
 .settings-btn {
-  background-color: #4caf50;
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 4px;
+  background-color: #4caf50 !important;
+  color: white !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 4px !important;
   border: none;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
+  text-align: left;
+  text-decoration: none !important;
 }
 
 .settings-btn:hover {
-  background-color: #45a049;
+  background-color: #45a049 !important;
+  text-decoration: none !important;
+}
+
+/* ── Burger-Menü ── */
+.burger-wrapper {
+  position: relative;
+}
+
+.burger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0 !important;
+}
+
+.burger-btn span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-header-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Animiertes X wenn offen */
+.burger-btn.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-btn.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  background-color: var(--color-header-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.dropdown-menu button {
+  padding: 0.65rem 1.25rem;
+  text-align: left;
+  border-radius: 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+.dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu button:hover {
+  background-color: rgba(128, 128, 128, 0.1);
   text-decoration: none;
 }

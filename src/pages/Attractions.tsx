@@ -20,7 +20,7 @@ interface Attraction {
 }
 
 const Attractions = () => {
-  const [attractions] = useState<Attraction[]>([
+  const attractions = [
     {
       id: '1',
       title: 'Giraffen-Fütterung',
@@ -179,6 +179,7 @@ const Attractions = () => {
       .filter(reg => reg.attractionId === attractionId)
       .reduce((sum, reg) => sum + reg.personCount, 0);
   };
+  ];
 
   return (
     <div className="attractions">
@@ -228,6 +229,7 @@ const Attractions = () => {
           onSubmit={handleSubmitRegistration}
         />
       )}
+    
     </div>
   );
 };

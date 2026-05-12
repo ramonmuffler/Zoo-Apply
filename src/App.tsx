@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Animals from "./pages/Animals";
 import Events from "./pages/Events";
 import Attractions from "./pages/Attractions";
+import MapToZoo from "./pages/map_to_zoo";
 import Contact from "./pages/Contact";
 import Dining from "./pages/Dining";
 import Tickets from "./pages/Tickets";
@@ -29,6 +30,8 @@ function App() {
         return <Events />;
       case "attractions":
         return <Attractions />;
+      case "map_to_zoo":
+        return <MapToZoo />;
       case "dining":
         return <Dining />;
       case "tickets":

@@ -1,6 +1,6 @@
+import { useState, useRef, useEffect } from "react";
 import "./Header.css";
-import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 
 interface HeaderProps {
   setCurrentPage: (page: string) => void;
@@ -8,93 +8,121 @@ interface HeaderProps {
 
 const Header = ({ setCurrentPage }: HeaderProps) => {
   const { isLoggedIn, username } = useAuth();
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") {
-      return "light";
-    }
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
-    const savedTheme = localStorage.getItem("theme");
-    return savedTheme === "dark" ? "dark" : "light";
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((current) => (current === "dark" ? "light" : "dark"));
+  const navigate = (page: string) => {
+    setCurrentPage(page);
+    setMenuOpen(false);
   };
+
+  // Menü schliessen bei Klick ausserhalb
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
       <div className="logo">
         <h1>Zoo Homepage</h1>
-        <label className="theme-switch">
-          <input
-            type="checkbox"
-            checked={theme === "dark"}
-            onChange={toggleTheme}
-          />
-          <span className="theme-switch-label">
-            {theme === "dark" ? "Dark" : "Light"}
-          </span>
-        </label>
       </div>
-      <nav className="nav">
-        <ul>
-          <li>
-            <button onClick={() => setCurrentPage("home")}>Home</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("about")}>Über uns</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("animals")}>Tiere</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("events")}>Events</button>
-          </li>
+
+      <nav className="nav" aria-label="Hauptnavigation">
+        {/* Hauptnavigation */}
+        <ul className="nav-main">
           <li>
             <button onClick={() => setCurrentPage("attractions")}>Attraktionen</button>
           </li>
           <li>
             <button onClick={() => setCurrentPage("dining")}>Essen & Trinken</button>
+            <button onClick={() => navigate("home")}>Home</button>
           </li>
+
           <li>
-            <button onClick={() => setCurrentPage("tickets")}>Tickets</button>
+            <button onClick={() => navigate("animals")}>Tiere</button>
           </li>
+
           <li>
-            <button onClick={() => setCurrentPage("reviews")}>
-              Bewertungen
-            </button>
+            <button onClick={() => navigate("events")}>Events</button>
           </li>
+
           <li>
-            <button onClick={() => setCurrentPage("contact")}>Kontakt</button>
-          </li>
-          <li className="auth-section">
-            {isLoggedIn ? (
-              <>
-                <span className="logged-in">Willkommen, {username}!</span>
-                <button
-                  onClick={() => setCurrentPage("settings")}
-                  className="settings-btn"
-                >
-                  Einstellungen
-                </button>
-              </>
-            ) : (
-              <>
-                <button onClick={() => setCurrentPage("registration")}>
-                  Registrieren
-                </button>
-                <button onClick={() => setCurrentPage("login")}>
-                  Anmelden
-                </button>
-              </>
-            )}
+            <button onClick={() => navigate("tickets")}>Tickets</button>
           </li>
         </ul>
+
+        {/* Auth-Bereich aus zweiter Version behalten */}
+        <div className="auth">
+          {isLoggedIn ? (
+            <span className="logged-in">Willkommen, {username}!</span>
+          ) : (
+            <>
+              <button
+                onClick={() => navigate("registration")}
+                className="auth-btn"
+              >
+                Registrieren
+              </button>
+
+              <button onClick={() => navigate("login")} className="auth-btn">
+                Anmelden
+              </button>
+            </>
+          )}
+        </div>
+
+        {/* Burger-Menü */}
+        <div className="burger-wrapper" ref={menuRef}>
+          <button
+            className={`burger-btn ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Menü öffnen"
+            type="button"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          {menuOpen && (
+            <div className="dropdown-menu">
+              <button onClick={() => navigate("about")}>Über uns</button>
+
+              <button onClick={() => navigate("attractions")}>
+                Attraktionen
+              </button>
+
+              <button onClick={() => navigate("map_to_zoo")}>
+                Karte zum Zoo
+              </button>
+
+              <button onClick={() => navigate("dining")}>
+                Essen &amp; Trinken
+              </button>
+
+              <button onClick={() => navigate("reviews")}>Bewertungen</button>
+
+              <button onClick={() => navigate("contact")}>Kontakt</button>
+
+              <button
+                onClick={() => navigate("settings")}
+                className="settings-btn"
+              >
+                Einstellungen
+              </button>
+            </div>
+          )}
+        </div>
       </nav>
     </header>
   );

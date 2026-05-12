@@ -4,7 +4,7 @@
 
 .attractions h2 {
   text-align: center;
-  color: #4CAF50;
+  color: var(--color-header-bg);
   margin-bottom: 3rem;
   font-size: 2rem;
 }
@@ -15,7 +15,7 @@
 }
 
 .attractions-header p {
-  color: #666;
+  color: var(--color-text-muted);
   font-size: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
@@ -31,10 +31,10 @@
 }
 
 .attraction-card {
-  border: 1px solid #e6e6e6;
+  border: 1px solid var(--color-border);
   padding: 1.5rem;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 200ms ease, box-shadow 200ms ease;
@@ -63,13 +63,13 @@
 }
 
 .attraction-content h3 {
-  color: #222;
+  color: var(--color-text);
   margin: 0;
   font-size: 1.1rem;
 }
 
 .attraction-description {
-  color: #555;
+  color: var(--color-text-muted);
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.4;
@@ -77,10 +77,10 @@
 }
 
 .attraction-time {
-  color: #2e7d32;
+  color: var(--color-header-bg);
   font-weight: 600;
   padding-top: 0.8rem;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--color-border);
   margin-top: 0.8rem;
   font-size: 0.9rem;
 }
@@ -129,6 +129,7 @@
   transform: translateY(0);
 }
 
+
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media (max-width: 1200px) {
@@ -153,6 +154,18 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
     padding: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .attractions-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .attractions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
+    padding: 2rem;
   }
 
   .attraction-icon {
@@ -161,13 +174,20 @@
 
   .btn-register {
     padding: 0.7rem 1rem;
+  }
+  
+  .attraction-content h3 {
+    font-size: 1rem;
+  }
+
+  .attraction-description {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .attractions {
-    padding: 2.5rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .attractions h2 {
@@ -180,6 +200,30 @@
 
   .attraction-content h3 {
     font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .attractions-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .attractions-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 1.5rem;
+  }
+
+  .attraction-card {
+    padding: 1.2rem;
+  }
+
+  .attraction-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .attraction-content h3 {
+    font-size: 0.95rem;
   }
 
   .attraction-description {
@@ -192,3 +236,7 @@
   }
 }
 
+  .attraction-time {
+    font-size: 0.85rem;
+  }
+}

@@ -10,9 +10,11 @@
 .logo h1 {
   margin: 0;
   font-size: 1.5rem;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
-/* Nav-Wrapper: alles in einer Zeile */
+/* Nav-Wrapper */
 .nav {
   display: flex;
   align-items: center;
@@ -36,30 +38,57 @@
   background: none;
   border: none;
   padding: 0.25rem 0.5rem;
-  border-radius: 0;
+  border-radius: 6px;
   color: var(--color-header-text);
   font-weight: bold;
   cursor: pointer;
   font-size: inherit;
+  line-height: 1.1;
+  white-space: nowrap;
+  transition: text-decoration-color 0.15s ease;
 }
 
 .nav button:hover {
   text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 
-/* Auth-Bereich */
-.auth-section {
+.nav button:focus-visible {
+  outline: 3px auto -webkit-focus-ring-color;
+  outline-offset: 2px;
+}
+
+/* ── Auth-Bereich (aus zweitem CSS behalten) ── */
+.auth {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex: 0 0 auto;
   padding-left: 1.5rem;
-  border-left: 1px solid var(--color-border);
+  border-left: 1px solid color-mix(in srgb, var(--color-header-text), transparent 70%);
+  font-size: 0.95rem;
 }
 
 .logged-in {
   font-weight: 600;
   color: var(--color-header-text);
   white-space: nowrap;
+}
+
+.auth-btn {
+  background-color: transparent;
+  border: 0;
+  padding: 0.25rem 0.25rem;
+  border-radius: 6px;
+  color: var(--color-header-text);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.auth-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 
 /* Einstellungen-Button */
@@ -72,8 +101,8 @@
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
-  width: 100%;
   text-align: left;
+  text-decoration: none !important;
 }
 
 .settings-btn:hover {
@@ -112,9 +141,11 @@
 .burger-btn.open span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
+
 .burger-btn.open span:nth-child(2) {
   opacity: 0;
 }
+
 .burger-btn.open span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }

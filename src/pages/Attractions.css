@@ -85,6 +85,50 @@
   font-size: 0.9rem;
 }
 
+/* ===== REGISTRATION STYLES ===== */
+
+.attraction-registration {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e8f5e9;
+}
+
+.registration-count {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.btn-register {
+  padding: 0.8rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 200ms ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+.btn-register:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+}
+
+.btn-register:active {
+  transform: translateY(0);
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media (max-width: 1200px) {
@@ -101,45 +145,8 @@
   }
 
   .attractions h2 {
-    font-size: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .attractions-header {
-    margin-bottom: 3.5rem;
-  }
-
-  .attractions-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 3rem;
-    padding: 2rem;
-  }
-
-  .attraction-icon {
-    font-size: 2.5rem;
-  }
-
-  .attraction-content h3 {
-    font-size: 1rem;
-  }
-
-  .attraction-description {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .attractions {
-    padding: 3rem 1rem;
-  }
-
-  .attractions h2 {
-    font-size: 1.3rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .attractions-header {
-    margin-bottom: 2.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
   }
 
   .attractions-grid {
@@ -148,24 +155,39 @@
     padding: 1.5rem;
   }
 
-  .attraction-card {
-    padding: 1.2rem;
+  .attraction-icon {
+    font-size: 2.5rem;
   }
 
-  .attraction-icon {
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
+  .btn-register {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .attractions {
+    padding: 2.5rem 1rem;
+  }
+
+  .attractions h2 {
+    font-size: 1.3rem;
+  }
+
+  .attractions-header p {
+    font-size: 0.9rem;
   }
 
   .attraction-content h3 {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .attraction-description {
     font-size: 0.85rem;
   }
 
-  .attraction-time {
+  .btn-register {
+    padding: 0.65rem 0.8rem;
     font-size: 0.85rem;
   }
 }

@@ -1,0 +1,134 @@
+.arm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.arm-modal {
+  width: 520px;
+  max-width: calc(100% - 32px);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.arm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(90deg,#f7f7f9,#ffffff);
+}
+
+.arm-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.arm-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.arm-body {
+  padding: 18px 20px 24px 20px;
+}
+
+.arm-description {
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.arm-time {
+  margin: 0 0 12px 0;
+  color: #555;
+}
+
+.arm-capacity {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #222;
+}
+
+.arm-capacity p { margin: 0; }
+
+.arm-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #222;
+}
+
+.arm-form input[type="text"],
+.arm-form input[type="email"],
+.arm-form input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.arm-error {
+  color: #b00020;
+  background: #ffe6e9;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.arm-success {
+  color: #0a6d2f;
+  background: #e6f9ec;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.arm-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg,#0077ff,#0066dd);
+  color: white;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #f3f3f3;
+  color: #222;
+}
+
+@media (max-width: 600px) {
+  .arm-modal { width: 100%; height: 100%; border-radius: 0; }
+  .arm-body { padding-bottom: 40px; }
+}

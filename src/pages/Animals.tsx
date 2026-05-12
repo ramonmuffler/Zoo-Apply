@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Animals.css';
 import loeweImg from '../picture/loewe.jpg';
 import elefantImg from '../picture/elefant.jpg';
@@ -153,6 +154,12 @@ const Animals: React.FC = () => {
     return (
         <div className="animals">
             <h2>Unsere Tiere</h2>
+            <div className="animals-map-cta">
+                <p>Du suchst ein bestimmtes Gehege oder einen Servicepunkt in der Nähe? Die Zoo-Karte zeigt wichtige Orte auf einen Blick.</p>
+                <Link to="/map" className="animals-map-link">
+                    Zur Zoo-Karte
+                </Link>
+            </div>
 
             {notFeedable.length > 0 && (
                 <section>

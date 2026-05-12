@@ -1,60 +1,46 @@
 import "./Header.css";
 import { useAuth } from "../context/AuthContext";
+import { Link, NavLink } from "react-router-dom";
 
-interface HeaderProps {
-  setCurrentPage: (page: string) => void;
-}
+const navigationItems = [
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "Über uns" },
+  { to: "/animals", label: "Tiere" },
+  { to: "/events", label: "Events" },
+  { to: "/attractions", label: "Attraktionen" },
+  { to: "/map", label: "Zoo-Karte" },
+  { to: "/dining", label: "Essen & Trinken" },
+  { to: "/tickets", label: "Tickets" },
+  { to: "/reviews", label: "Bewertungen" },
+  { to: "/contact", label: "Kontakt" },
+  { to: "/settings", label: "Einstellungen" },
+];
 
-const Header = ({ setCurrentPage }: HeaderProps) => {
+const Header = () => {
   const { isLoggedIn, username } = useAuth();
 
   return (
     <header className="header">
       <div className="logo">
-        <h1>Zoo Homepage</h1>
+        <Link to="/">
+          <h1>Zoo Homepage</h1>
+        </Link>
       </div>
       <nav className="nav">
         <ul>
-          <li>
-            <button onClick={() => setCurrentPage("home")}>Home</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("about")}>Über uns</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("animals")}>Tiere</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("events")}>Events</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("attractions")}>Attraktionen</button>
-          </li>
-                    <li>
-            <button onClick={() => setCurrentPage("map_to_zoo")}>Karte zum Zoo</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("dining")}>Essen & Trinken</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("tickets")}>Tickets</button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("reviews")}>
-              Bewertungen
-            </button>
-          </li>
-          <li>
-            <button onClick={() => setCurrentPage("contact")}>Kontakt</button>
-          </li>
-          <li>
-            <button
-              onClick={() => setCurrentPage("settings")}
-              className="settings-btn"
-            >
-              Einstellungen
-            </button>
-          </li>
+          {navigationItems.map((item) => (
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) =>
+                  `nav-link${isActive ? " nav-link--active" : ""}`
+                }
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
           <li className="auth-section">
             {isLoggedIn ? (
               <>
@@ -62,12 +48,22 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
               </>
             ) : (
               <>
-                <button onClick={() => setCurrentPage("registration")}>
+                <NavLink
+                  to="/registration"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " nav-link--active" : ""}`
+                  }
+                >
                   Registrieren
-                </button>
-                <button onClick={() => setCurrentPage("login")}>
+                </NavLink>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " nav-link--active" : ""}`
+                  }
+                >
                   Anmelden
-                </button>
+                </NavLink>
               </>
             )}
           </li>

@@ -1,4 +1,5 @@
-import './Home.css';
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
   return (
@@ -6,6 +7,14 @@ const Home = () => {
       <section className="hero">
         <h2>Willkommen im Zoo!</h2>
         <p>Entdecken Sie die wunderbare Welt der Tiere. Unser Zoo bietet eine Vielzahl von Arten und Erlebnissen für die ganze Familie.</p>
+        <div className="home-actions">
+          <Link to="/map" className="home-link-button">
+            Zur Zoo-Karte
+          </Link>
+          <Link to="/animals" className="home-link-button home-link-button--secondary">
+            Tiere entdecken
+          </Link>
+        </div>
       </section>
       <section className="info">
         <h3>Öffnungszeiten</h3>

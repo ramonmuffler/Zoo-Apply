@@ -41,6 +41,10 @@ const Header = ({ setCurrentPage }: HeaderProps) => {
         {/* Hauptnavigation */}
         <ul className="nav-main">
           <li>
+            <button onClick={() => setCurrentPage("attractions")}>Attraktionen</button>
+          </li>
+          <li>
+            <button onClick={() => setCurrentPage("dining")}>Essen & Trinken</button>
             <button onClick={() => navigate("home")}>Home</button>
           </li>
 
